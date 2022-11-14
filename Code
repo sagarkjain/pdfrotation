@@ -1,0 +1,15 @@
+import PyPDF2
+TestFile= 'Sample.pdf'
+newFile='test.pdf.pdf'
+angle_of_rotation=90
+page_number=3
+pdfFileObj = open(TestFile, 'rb')
+pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+pdfWriter = PyPDF2.PdfFileWriter()
+pageObj = pdfReader.getPage(page_number-1)
+pageObj.rotateClockwise(angle_of_rotation)
+pdfWriter.addPage(pageObj)
+newFile = open(newFile, 'wb')
+pdfWriter.write(newFile)
+pdfFileObj.close()
+newFile.close()
